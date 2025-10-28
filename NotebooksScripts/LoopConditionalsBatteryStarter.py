@@ -1,3 +1,5 @@
+# Go wild and develop
+
 """
 Battery Modeling Tutorial - Loops and Conditionals
 This file demonstrates Python loops and conditional statements through 
@@ -18,7 +20,7 @@ Complete the script by filling in the missing code sections marked with <---.
 
 This is a comment block or docstring which can span multiple lines. 
 It is often used at the start of files to describe the file.
-@author: PLACE YOUR NAME HERE
+@author: Tamunoimim
 """
 
 # Import any necessary libraries 
@@ -41,8 +43,8 @@ demand_P = [5, -8, 12, -3, 7, -10, 15, -5, 8, -2]
 
 # Initialize lists to store battery power, state of charge and the new net demand after battery operation
 bat_P = [0] * len(demand_P)  # List to store battery power for each period, initialized to 0
-soc_E =   # <--- List to store state of charge, starting at 50 kWh
-net_demand_P =  # <--- List to store net demand after battery operation
+soc_E = [soc_0] * len(demand_P) #List to store state of charge, starting at 5 kWh
+net_demand_P =  [0] * len(demand_P) #List to store net demand after battery operation
 
 # write code with the general structure:
 # for loop condition:
@@ -54,18 +56,18 @@ net_demand_P =  # <--- List to store net demand after battery operation
 #        do nothing
 
 # iterate through each time period using the range() function
-for : # <--- Fill in the for loop to iterate over the range of demand_P length
+for i in range(len(demand_P)): # <--- Fill in the for loop to iterate over the range of demand_P length
     
     # Conditional logic - check if demand is positive, negative or 0
-    if demand_P[i] 0: # <--- Complete the condition to check if demand is positive
+    if demand_P[i]>0: # <--- Complete the condition to check if demand is positive
         # Case (a): Positive demand means discharge the battery
         # Calculate battery power (discharge = negative internal battery power)
         bat_P[i] = -1 * demand_P[i]
         
-    el # <--- complete the else if condition to check if demand is negative:
+    elif demand_P[i] < 0: # <--- complete the else if condition to check if demand is negative:
         # Case (b): Negative demand means charge the battery  
         # Calculate battery power (charging = positive internal power)
-        bat_P[i] = 
+        bat_P[i] = -1 * demand_P[i]
 
     else:
         # Case (c): Zero demand means no battery operation
@@ -73,12 +75,12 @@ for : # <--- Fill in the for loop to iterate over the range of demand_P length
 
     # Update state of charge (SoC) based on battery power and time step
     if i == 0:
-        soc_E[0] = soc_0  # Maintain initial SoC
+        soc_E[i] = soc_0 + bat_P[i] * dt # Maintain initial SoC
     else:
-        soc_E[i]  # Update SoC based on previous timestep's SoC and battery power, remember you need to convert power to energy
+        soc_E[i] = soc_E[i-1] + bat_P[i] * dt # Update SoC based on previous timestep's SoC and battery power, remember you need to convert power to energy
 
     # update the net demand after battery operation
-    net_demand_P[i] =
+    net_demand_P[i] = demand_P[i]+ bat_P[i]
 
 # Print the final state of charge
-print() # <--- Add a print statement to display the final state of charge. 
+print(soc_E[-1]) # <--- Add a print statement to display the final state of charge. 
