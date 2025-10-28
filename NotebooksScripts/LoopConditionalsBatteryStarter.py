@@ -84,3 +84,4 @@ for i in range(len(demand_P)): # <--- Fill in the for loop to iterate over the r
 
 # Print the final state of charge
 print(soc_E[-1]) # <--- Add a print statement to display the final state of charge. 
+# Print the battery power, state of charge and net demand for each time period
