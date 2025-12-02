@@ -6,7 +6,7 @@ RL = 0.1      # ohms
 RH = 10       # ohms
 V1 = 1        # volts
 
-# Coefficient matrix A (3x3)
+# Coefficient matrix A (3x3) 
 A = np.array([
     [(2.0/RL + 1.0/RH),  -1.0/RL,             0.0],
     [ -1.0/RL,           (2.0/RL + 1.0/RH),  -1.0/RL],
