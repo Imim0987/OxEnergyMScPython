@@ -1,0 +1,119 @@
+id,Name,Fueltype,Technology,Capacity (MW),lat,lon
+37,Sloy,Hydro,Run-Of-River,153.0,56.2615,-4.7636
+38,Foye,Hydro,Run-Of-River,320.0,57.2558,-4.4941
+39,Ffes,Hydro,Run-Of-River,384.0,52.9808,-3.9686
+40,Dino,Hydro,Run-Of-River,1728.0,53.1206,-4.1153
+41,Crua,Hydro,Pumped Storage,440.0,56.4192,-5.0127
+98,Didcot,Natural Gas,CCGT,1490.0,51.6223,-1.2608
+103,Heym,Nuclear,Steam Turbine,2676.0,54.030255,-2.91305
+105,Torn,Nuclear,Steam Turbine,1370.0,55.9679,-2.4086
+107,Sizb,Nuclear,Steam Turbine,1320.0,52.21303333333333,1.6198666666666668
+177,Svrp,Natural Gas,CCGT,850.0,51.5475,-2.975
+178,Sutb,Natural Gas,CCGT,819.0,52.75713,0.19189
+179,Stay,Natural Gas,CCGT,1828.0,53.07368,-0.85901
+180,Spln,Natural Gas,CCGT,903.0,52.80721,-0.13334
+181,Shos,Natural Gas,CCGT,420.0,50.82992,-0.23144
+182,Seab,Natural Gas,CCGT,1258.0,51.5392,-2.67
+223,Kead,Natural Gas,CCGT,794.0,53.59444,-0.7504399999999999
+225,Cdcl,Natural Gas,CCGT,440.0,52.58395,1.73381
+226,Brgg,Natural Gas,CCGT,268.0,53.5411,-0.5055
+375,Hinkley Point,Nuclear,Steam Turbine,5284.0,51.20726666666667,-3.1357666666666666
+438,Rock,Natural Gas,CCGT,830.0,36.1297,-5.354
+439,Pete,Natural Gas,CCGT,405.0,52.5769,-0.204
+440,Pemb,Natural Gas,CCGT,2305.0,51.68421333333333,-5.002111666666667
+441,Medp,Natural Gas,CCGT,700.0,51.43956,0.68939
+442,Laga,Natural Gas,CCGT,905.0,50.38782,-4.01099
+443,Kilns,Natural Gas,CCGT,680.0,53.6536913756366,-0.256617358332895
+444,Humr,Natural Gas,CCGT,1240.0,53.60078000000001,-0.14462
+446,Fell,Natural Gas,CCGT,180.0,54.4184,-3.4883
+447,Damc,Natural Gas,CCGT,805.0,51.42492,0.60143
+448,Coso,Natural Gas,CCGT,800.0,51.51185,0.5079
+449,Corb,Natural Gas,CCGT,401.0,52.51044,-0.68143
+459,Grai,Natural Gas,CCGT,1423.0,51.44298,0.70782
+549,Thanet,Wind,Offshore,300.0,51.4299,1.6334
+675,Saltend,Natural Gas,CCGT,1200.0,53.73543,-0.24315
+676,Rye House,Natural Gas,CCGT,715.0,51.76317,0.00974
+677,Peterhead,Natural Gas,CCGT,1180.0,57.47721,-1.78888
+678,Marchwood,Natural Gas,CCGT,920.0,50.89798,-1.43751
+679,Little Barford,Natural Gas,CCGT,735.0,52.20533,-0.2668
+680,Immingham,Natural Gas,CCGT,1280.0,53.63779,-0.23674
+681,Enfield,Natural Gas,CCGT,408.0,51.66248,-0.02248
+682,Coolkeeragh,Natural Gas,CCGT,473.0,55.0437,-7.24868
+683,Connah Quay,Natural Gas,CCGT,1500.0,53.2317,-3.08149
+684,Ballylumford,Natural Gas,CCGT,720.0,54.845,-5.786
+806,Indq,Natural Gas,CCGT,140.0,50.3980983853812,-4.89920423117703
+810,Bage,Natural Gas,CCGT,552.0,51.603449999999995,-3.8077
+830,Tayl,Natural Gas,CCGT,144.0,51.54609,-0.25731
+833,Carr,Natural Gas,CCGT,910.0,53.43772,-2.41014
+1117,Klyn,Natural Gas,CCGT,340.0,52.72783,0.37975
+1645,Bhlaw,Wind,Offshore,108.0,57.2191,-4.5819
+1648,Brbeo,Wind,Offshore,254.0,53.4801,-3.2701
+1654,Ddgno,Wind,Offshore,402.0,53.1175,0.6135
+1657,Faarw,Wind,Onshore,140.0,51.4558,1.08695
+1658,Falgw,Wind,Onshore,144.0,55.8313,-2.688
+1660,Grifw,Wind,Onshore,204.0,56.5812,-3.7338
+1662,Lncsw,Wind,Offshore,269.0,53.1842,0.4981
+1664,Ormonde,Wind,Offshore,150.0,54.0889,-3.4386
+1666,Pen Cymoedd,Wind,Onshore,228.0,51.6555,-3.6957
+1668,Rmpno,Wind,Offshore,400.0,50.641,-0.1801
+1671,Wtmso,Wind,Onshore,210.0,53.0977,0.5615
+1673,Kilroot,Natural Gas,Steam Turbine,144.0,54.725,-5.767
+1757,Whitelee Wind Farm,Wind,Onshore,430.0,55.679199999999994,-4.28295
+2892,Whitelee Wind Farm,Wind,Onshore,109.0,55.6394,-4.3176
+2896,West Of Duddon Sands Wind Farm,Wind,Offshore,389.0,53.9851,-3.462
+3010,London Array Wind Farm,Wind,Offshore,630.0,51.6217,1.4958
+3039,Humber Gateway Wind Farm,Wind,Offshore,219.0,53.3875,0.5006
+3041,Hornsea Wind Farm,Wind,Offshore,1218.0,53.6815,1.4207
+3046,Harestanes Wind Farm,Wind,Onshore,136.0,55.239,-3.5742
+3053,Hadyard Hill Wind Farm,Wind,Onshore,120.0,55.2568,-4.7319
+3054,Gwynt Mor Offshore Wind Farm,Wind,Offshore,576.0,53.454,-3.6266
+3055,Gunfleet Sands Offshore Wind Farm,Wind,Offshore,184.8,51.720333333333336,1.2186
+3064,Kype Muir Wind Farm,Wind,Onshore,163.4,55.6327,-4.0361
+3067,Kilgallioch Wind Farm,Wind,Onshore,239.0,54.9885,-4.8017
+3092,Stronelairg Wind Farm,Wind,Onshore,228.0,57.1269,-4.5264
+3103,Walney Wind Farm,Wind,Offshore,659.0,54.091,-3.741
+3104,Walney Wind Farm,Wind,Offshore,183.6,54.0394,-3.5158
+3105,Walney Wind Farm,Wind,Offshore,183.6,54.0807,-3.609
+3122,Race Bank Wind Farm,Wind,Offshore,573.0,53.136,0.5892
+3144,Sheringham Shoal Wind Farm,Wind,Offshore,317.0,53.1353,1.1479
+3157,Robin Rigg West Wind Farm,Wind,Offshore,174.0,54.755750000000006,-3.7124
+3245,Grmo,Natural Gas,CCGT,144.0,56.010986,-3.695127
+3340,Roos,Natural Gas,CCGT,229.0,54.105162550959,-3.1902408599854
+3341,Derw,Natural Gas,CCGT,236.0,52.911004873482,-1.4142778515816
+3659,Deeside,Natural Gas,CCGT,515.0,53.2332,-3.0547
+3690,Barry,Natural Gas,CCGT,235.0,51.4089,-3.2301
+3810,Black Law Wind Farm,Wind,Onshore,187.4,55.7622,-3.7626
+3817,Beinneun Wind Farm,Wind,Onshore,108.8,57.0956,-4.9655
+3819,Beinn An Tuirc Wind Farm,Wind,Onshore,123.6,55.56403333333333,-5.595433333333333
+3845,Aikengall Wind Farm,Wind,Onshore,184.3,55.90926666666667,-2.4776
+3851,Beatrice Wind Farm,Wind,Offshore,588.0,58.0882,-2.9502
+3875,Arecleoch Wind Farm,Wind,Onshore,120.0,55.0688,-4.7971
+3902,Greater Gabbard Wind Farm,Wind,Offshore,504.0,51.9176,1.9284
+3919,Galloper Offshore Wind Farm,Wind,Offshore,353.0,51.881,2.0401
+3928,Clyde Wind Farm,Wind,Onshore,172.8,55.5041,-3.5479
+3929,Clyde Wind Farm,Wind,Onshore,350.0,55.4416,-3.5427
+3946,Dorenell Wind Farm,Wind,Onshore,177.0,57.3509,-3.1317
+3952,Crystal Rig Wind Farm,Wind,Onshore,172.5,55.912933333333335,-2.5364333333333335
+8901,Abbey Fields Solar Farm,Solar,PV,378.3,51.32875,0.9084
+11643,Cottam Development Centre,Natural Gas,CCGT,445.0,53.30513,-0.78582
+11832,Cumberhead West Wind Farm,Wind,Onshore,175.0,55.5932,-3.8888
+12211,Dogger Bank Wind Farm,Wind,Offshore,3600.0,55.9673,1.6679000000000002
+12276,Drax,Solid Biomass,Steam Turbine,2580.0,53.7356,-0.9911
+12334,East Anglia Wind Farm,Wind,Offshore,2914.0,52.137,2.1728
+12787,Fawley Refinery,Natural Gas,Steam Turbine,125.0,50.83337,-1.36966
+12836,Ferrybridge Multifuel,Solid Biomass,Steam Turbine,138.0,53.7187,-1.2869
+13863,Hirwaun,Natural Gas,Steam Turbine,299.0,51.74467,-3.54103
+13953,Hornsea Wind Farm,Wind,Offshore,1300.0,53.9601,1.54
+14476,Kemsley Paper Mill,Natural Gas,CCGT,147.0,51.36412,0.75656
+16348,Moray East Offshore Wind Farm,Wind,Offshore,948.0,57.9673,-2.7905
+18780,Rocksavage,Natural Gas,CCGT,810.0,53.31522,-2.72278
+18952,Saica Paper Mill,Natural Gas,CCGT,135.0,53.42598,-2.41535
+19113,Saltholme North,Natural Gas,CCGT,100.8,54.603905,-1.21490229903652
+19286,Seagreen Offshore Wind Farm,Wind,Offshore,1075.0,56.6355,-1.9266
+19601,Smurfit Townsend Hook,Natural Gas,CCGT,115.0,51.32877,0.45111
+20220,South Kyle Wind Farm,Wind,Onshore,240.0,55.3173,-4.2932
+20681,Tees Rep Biomass,Solid Biomass,Steam Turbine,299.0,54.6002,-1.1586
+20941,Triton Knoll Wind Farm,Wind,Offshore,857.0,53.2123,0.8616
+21418,Viking Wind Farm United Kingdom,Wind,Onshore,443.0,60.3393,-1.2084
+21608,Walney Wind Farm,Wind,Offshore,659.0,54.901,-3.6201
+21648,West Burton,Natural Gas,CCGT,1360.0,53.36222999999999,-0.8075899999999999

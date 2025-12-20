@@ -1,0 +1,211 @@
+=== Cell 0 ===
+import os
+import numpy as np
+import pandas as pd
+import pandapower as pp
+import pandapower.plotting as ppplot
+import matplotlib.pyplot as plt
+import networkx as nx
+import geopandas as gpd
+from shapely.geometry import Point
+from pandapower import plotting
+from pandapower.plotting import simple_plot
+
+# plotting convenience
+%matplotlib inline
+plt.rcParams.update({"figure.figsize": (10,6)})
+
+
+# Define the data directory, as data folder in the parent OXENERGYMScPython directory
+DATA_DIR = os.path.join("..", "Data")
+
+
+=== Cell 5 ===
+# import grid supply point locations
+gsp_points = pd.read_excel(os.path.join(DATA_DIR, "FES-2025_Regional-electricity-demand-breakdown_V2 - Copy.xlsm"), sheet_name="GSP info", skiprows=4, index_col=0)  # GSP lat lon mapping
+gsp_points["geometry"] = gpd.points_from_xy(gsp_points.Longitude, gsp_points.Latitude)
+gsp_points = gpd.GeoDataFrame(gsp_points, geometry="geometry", crs="EPSG:4326")
+gsp_points[["Longitude", "Latitude"]] = gsp_points[["Longitude", "Latitude"]].astype(float)
+
+# major flop is the first letter of major flop
+gsp_points["Major FLOP"] = gsp_points["Minor FLOP"].astype(str).str[0]
+
+# convert to british national grid
+gsp_points = gsp_points.to_crs(epsg=27700)
+
+=== Cell 7 ===
+# import GSP polygons as well in British National Grid coordinates 
+gsp_polygons = gpd.read_file("C:\\Users\\catz0911\\Downloads\\gsp_regions_20250109\\Proj_4326\\GSP_regions_4326_20250109.geojson")
+gsp_polygons.crs = "EPSG:4326"
+gsp_polygons = gsp_polygons.to_crs(epsg=27700)
+
+
+=== Cell 14 ===
+ax = demand_region_major_flop.plot(
+    column="P(Gross)",
+    cmap="Purples",
+    legend=False,
+    edgecolor="black"
+)
+
+# Get colorbar from the figure by searching for mappable
+fig = ax.get_figure()
+cbar = fig.axes[-1]   # last axis is the colorbar if it exists
+cbar.set_ylabel("2024–2025 Winter Peak demand (MW)", rotation=270, labelpad=20)
+ax.set_title("2024–2025 FES Demand by Major FLOP Region")
+plt.show()
+
+=== Cell 18 ===
+ax = demand_region_group_flop.plot(column="P(Gross)", cmap="Purples", legend=False, edgecolor="black")
+# ensure x and y have same aspect ratio
+ax.set_aspect('equal', adjustable='datalim')
+
+=== Cell 20 ===
+ax = demand_region_major_flop.plot(column="Embedded Solar", cmap="Wistia", legend=False, edgecolor="black")
+# color bar label
+cbar = ax.get_figure().get_axes()[-1]
+cbar.set_ylabel("Embedded Solar Generation (MW)", rotation=270, labelpad=20)
+# ensure x and y have same aspect ratio
+ax.set_aspect('equal', adjustable='datalim')
+
+=== Cell 21 ===
+ax = demand_region_major_flop.plot(column="Embedded Wind", cmap="Greens", legend=True, edgecolor="black")
+# color bar label
+cbar = ax.get_figure().get_axes()[-1]
+cbar.set_ylabel("Embedded Wind Generation (MW)", rotation=270, labelpad=20)
+# ensure x and y have same aspect ratio
+ax.set_aspect('equal', adjustable='datalim')
+
+=== Cell 23 ===
+gens_df = pd.read_csv(os.path.join(DATA_DIR, "UK_2025_gen_above100MW_EPSG4326 (1).csv"), index_col=0)
+print(gens_df.shape)
+# convert to geopandas using longitude and latitude columns
+gen_gdf = gpd.GeoDataFrame(gens_df, geometry=gpd.points_from_xy(gens_df.lon, gens_df.lat), crs="EPSG:4326")
+
+# remove gilbraltar 
+gen_gdf = gen_gdf[gen_gdf.lat >= 40]
+
+# convert to british national grid
+gen_gdf = gen_gdf.to_crs(epsg=27700)
+
+=== Cell 30 ===
+ax = large_wind_major_flop_polygons.plot(column="Capacity (MW)", cmap="Greens", legend=True, edgecolor="black")
+
+# add points from gen_gdf with point size related to capacity
+wind_gen = gen_gdf[gen_gdf["Fueltype"]=='Wind']
+wind_gen.plot(
+    ax=ax, 
+    column="Capacity (MW)", 
+    markersize=wind_gen["Capacity (MW)"] / 10,  # Scale factor to adjust size
+    cmap="Reds",
+    alpha=0.7,
+    edgecolor="black",
+    linewidth=0.5
+)
+
+=== Cell 32 ===
+from shapely.geometry import Point, LineString
+import contextily as ctx
+import matplotlib.pyplot as plt
+
+# --- 1) Prepare the polygon GeoDataFrame and representative points ---
+# Use the variable you have; you mentioned demand_region_major_flop
+poly_gdf = demand_region_major_flop.copy()
+
+# Normalise the Major FLOP name text to avoid subtle mismatches
+name_col = "Major FLOP"
+poly_gdf[name_col] = poly_gdf[name_col].astype(str).str.strip()
+
+# Ensure geometry and CRS are correct (expect EPSG:27700 in your project)
+if poly_gdf.crs is None:
+    poly_gdf = poly_gdf.set_crs(epsg=27700)
+elif poly_gdf.crs.to_epsg() != 27700:
+    poly_gdf = poly_gdf.to_crs(epsg=27700)
+
+# Create a representative point that is guaranteed to be inside the polygon
+if 'rep_pt' not in poly_gdf.columns:
+    poly_gdf = poly_gdf.copy()
+    poly_gdf['rep_pt'] = poly_gdf.geometry.representative_point()
+
+
+=== Cell 38 ===
+# 1) prepare polygon gdf and rep points
+poly_gdf = demand_region_major_flop.copy()
+NAME = "Major FLOP"                          # adjust only if your column name differs
+poly_gdf[NAME] = poly_gdf[NAME].astype(str).str.strip()
+
+# ensure polygons are in British National Grid (meters)
+if poly_gdf.crs is None:
+    poly_gdf = poly_gdf.set_crs(epsg=27700)
+elif poly_gdf.crs.to_epsg() != 27700:
+    poly_gdf = poly_gdf.to_crs(epsg=27700)
+
+# representative point (guaranteed inside polygon)
+poly_gdf['rep_pt'] = poly_gdf.geometry.representative_point()
+
+
+=== Cell 40 ===
+# 3) build MST to connect all bus points (Euclidean distances in EPSG:27700)
+coords = [(pt.x, pt.y) for pt in bus_gdf.geometry]
+n = len(coords)
+# build complete weighted graph
+G = nx.Graph()
+for i in range(n):
+    G.add_node(i)
+for i in range(n):
+    xi, yi = coords[i]
+    for j in range(i+1, n):
+        xj, yj = coords[j]
+        d = ((xi-xj)**2 + (yi-yj)**2)**0.5
+        G.add_edge(i, j, weight=d)
+
+# minimum spanning tree edges
+mst = nx.minimum_spanning_tree(G, weight='weight')
+mst_edges = list(mst.edges())
+
+# create LineString geometries for MST edges
+line_geoms = []
+meta = []
+for i, j in mst_edges:
+    line_geoms.append(LineString([coords[i], coords[j]]))
+    meta.append({ 'from': bus_gdf.iloc[i][NAME], 'to': bus_gdf.iloc[j][NAME], 
+                  'from_idx': i, 'to_idx': j })
+
+lines_gdf = gpd.GeoDataFrame(meta, geometry=line_geoms, crs=bus_gdf.crs)
+lines_gdf.head()
+
+=== Cell 41 ===
+# 4) quick plot (reproject to EPSG:3857 for basemap)
+poly_plot  = poly_gdf.to_crs(epsg=3857)
+bus_plot   = bus_gdf.to_crs(epsg=3857)
+lines_plot = lines_gdf.to_crs(epsg=3857)
+
+fig, ax = plt.subplots(figsize=(11,9))
+poly_plot.plot(ax=ax, facecolor='none', edgecolor='0.7', linewidth=0.6, zorder=1)
+lines_plot.plot(ax=ax, color='black', linewidth=1.4, zorder=2)
+
+# size by Pd_MW if available else constant
+if 'Pd_MW' in bus_plot.columns:
+    sizes = (bus_plot['Pd_MW'].fillna(0) + 0.1) ** 0.8 * 40
+    bus_plot.plot(ax=ax, markersize=sizes, color='red', edgecolor='k', zorder=3)
+else:
+    bus_plot.plot(ax=ax, color='red', markersize=50, edgecolor='k', zorder=3)
+
+# === 🔥 Add bus name labels here ===
+for i, row in bus_plot.iterrows():
+    ax.text(row.geometry.x + 15000, row.geometry.y + 15000,
+            str(row['Major FLOP']),
+            fontsize=8, color='black', zorder=4)
+
+ax.set_axis_off()
+plt.title("Major FLOPs with bus points and connections")
+ctx.add_basemap(ax, source=ctx.providers.Esri.WorldStreetMap) 
+plt.show()
+
+
+=== Cell 43 ===
+pp.runpp(net)  
+simple_plot(net)
+print(net.res_bus)
+
+
